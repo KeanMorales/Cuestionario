@@ -152,7 +152,7 @@ DELIMITER $$
 )
 BEGIN
      DECLARE idpregunta_aleatoria INT DEFAULT 0;
-     
+
 	   DROP TABLE IF EXISTS temporal;
      CREATE TEMPORARY TABLE temporal
 	   (
@@ -183,7 +183,7 @@ $$;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `up_usuario`(
+!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `up_usuario`(
 IN _nombre VARCHAR(50),
 IN _contrasenia VARCHAR(100)
 )
@@ -192,8 +192,9 @@ SELECT p.idpersona, u.nombre, u.contrasenia,CONCAT(p.apellidos,', ',p.nombres)
 AS 'APELLIDOS_Y_NOMBRES'FROM usuario u
 INNER JOIN persona p ON u.idpersona = p.idpersona
 WHERE nombre=_nombre AND contrasenia=_contrasenia;
-END */$$
-DELIMITER ;
+END;
+$$
+
 
 /* Procedure structure for procedure `up_verificar_respuesta` */
 
@@ -201,16 +202,197 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `up_verificar_respuesta`(
+!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `up_verificar_respuesta`(
 IN _idpregunta INT,
 IN _idalternativa INT
 )
 BEGIN
 	select * from alternativa where idalternativa=_idalternativa and idpregunta = _idpregunta AND respuesta = '1';
-END */$$
-DELIMITER ;
+END;
+$$
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*PROCEDURE CURSOS*/
+
+DELIMITER $$
+CREATE PROCEDURE InsertarCurso(
+	IN NombreCur varchar(500)
+)
+BEGIN
+	declare validar int default 0;
+	select count(NombreCurso) into validar from Curso where NombreCurso=NombreCur;
+    if validar = 0 THEN
+		insert into Curso (NombreCurso) values (NombreCur);
+	end if;
+	if validar > 0 then
+		SELECT 'ERROR - DUPLICADO' AS FATAL_ERROR;
+	END IF;
+END;
+$$
+
+DELIMITER $$
+CREATE PROCEDURE ActualizarCurso(
+	In IDE int,
+    In NombreCurActu varchar(500)
+)
+BEGIN
+	UPDATE Curso set NombreCurso = NombreCurActu where IdCurso=IDE;
+END;
+$$
+
+
+DELIMITER $$
+CREATE PROCEDURE EliminarCurso(
+	In IDE int
+)
+BEGIN
+	UPDATE Curso set Estado = 'Anulado' WHERE IdCurso=IDE;
+END;
+$$
+
+
+DELIMITER $$
+CREATE PROCEDURE MostrarCursos()
+BEGIN
+	select * from Curso;
+END;
+$$
+
+call ActualizarCurso(2,'Ingenieria de Software');
+DELIMITER $$
+call InsertarCurso('Base de Datos');
+$$
+call EliminarCurso(3);
+DELIMITER $$
+call MostrarCursos;
+$$
+
+
+/*PROCEDURE TEMA*/
+
+
+DELIMITER $$
+CREATE PROCEDURE InsertarTema(
+	IN IDE int,
+	IN NomTema varchar(500)
+)
+BEGIN
+	insert into Tema(NombreTema, idCurso) values(NomTema,IDE);
+END;
+$$
+
+DELIMITER $$
+CREATE PROCEDURE ActualizarTema(
+	In IDE int,
+	IN IDETEMA int,
+	IN NomNuevoTema varchar(500)
+)
+BEGIN
+    update Tema set NombreTema = NomNuevoTema where IdTema = IDETEMA and idCurso = IDE;
+END;
+$$
+
+DELIMITER $$
+CREATE PROCEDURE EliminarTema(
+	IN IDECurso int,
+    IN IDETEMA int
+)
+BEGIN
+	UPDATE Tema set Estado = 'Anulado' WHERE IdTema = IDETEMA and idCurso = IDECurso;
+END;
+$$
+
+DELIMITER $$
+CREATE PROCEDURE MostrarTemas()
+BEGIN
+	SELECT * FROM Tema;
+END;
+$$
+
+
+/*PROCEDURE BUSCAR*/
+DELIMITER $$
+CREATE PROCEDURE BCurso(
+	IN NameCurso varchar(150)
+)
+BEGIN
+	SELECT * FROM Curso WHERE NombreCurso like concat(NameCurso,'%');
+END;
+$$
+
+DELIMITER $$
+CREATE PROCEDURE BTema(
+	IN IDECurso int,
+	IN NameTema varchar(150)
+)
+BEGIN
+	SELECT * FROM Tema WHERE NombreTema like concat(NameTema,'%') and idCurso = IDECurso;
+END;
+$$
+
+
+DELIMITER $$
+CREATE PROCEDURE BPregunta(
+	IN IDETEMA varchar(150),
+	IN NamePregunta varchar(150)
+)
+BEGIN
+	SELECT * FROM Pregunta WHERE Descripcion like concat('%',NamePregunta,'%') and IDTema = IDETEMA;
+END;
+$$
+
+
+DELIMITER $$
+CREATE PROCEDURE BAlternativa(
+	IN NumberQuestion int,
+	IN NameAlternativa varchar(150)
+)
+BEGIN
+	SELECT * FROM Alternativa WHERE Alternativa like concat(NameAlternativa,'%') and idPregunta = NumberQuestion;
+END;
+$$
+
+/*XML INSERTAR PREGUNTA - ALTERNATIVA*/
+
+
+DELIMITER $$
+CREATE PROCEDURE insertar_alternativas(
+IN IDE int,
+IN _xml TEXT(150000)
+)
+BEGIN
+	/*ALTERNATIVAS*/
+	DECLARE i INT DEFAULT 1;
+	DECLARE n INT DEFAULT 0;
+	DECLARE alternativa VARCHAR(200) DEFAULT '';
+	/*RESPUESTAS*/
+	DECLARE respuesta VARCHAR(250) default '';
+    /*ASIGNAR*/
+
+	SET n = extractvalue(_xml, 'count(alternativas/alternativa)');
+
+	WHILE i <= n DO
+	   SET alternativa = ExtractValue(_xml, '//alternativa[$i]');
+       SET respuesta = Extractvalue(_xml,'//respuesta[$i]');
+       insert into Alternativa (Alternativa,Respuesta,idPregunta) values(alternativa,respuesta,IDE);
+	   SET i = i+1;
+	END WHILE;
+END
+$$
+
+/*VALIDAR RESPUESTA*/
+
+DELIMITER $$
+CREATE PROCEDURE validar_respuesta(
+	IN IDpregunta int,
+    IN Res nvarchar(150)
+)
+BEGIN
+	DECLARE correcto nvarchar(150) default '';
+	select Alternativa into correcto from alternativa WHERE Respuesta = 'true' and idPregunta = IDpregunta;
+    IF TRIM(Res) = correcto THEN
+		SELECT 'CORRECTO' AS RESULTADO;
+	ELSE
+		SELECT 'INCORRECTO' AS RESULTADO;
+    END IF;
+END;
+$$
