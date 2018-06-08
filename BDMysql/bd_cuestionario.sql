@@ -1,8 +1,4 @@
-/*
-SQLyog Ultimate v8.61 
-MySQL - 5.5.25a : Database - cuestionario
-*********************************************************************
-*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -16,7 +12,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`cuestionario` /*!40100 DEFAULT CHARACTE
 
 USE `cuestionario`;
 
-/*Table structure for table `alternativa` */
 
 DROP TABLE IF EXISTS `alternativa`;
 
@@ -57,7 +52,7 @@ insert  into `curso`(`idcurso`,`nombre`,`estado`) values (1,'PROGRAMACION','1');
 
 UNLOCK TABLES;
 
-/*Table structure for table `persona` */
+
 
 DROP TABLE IF EXISTS `persona`;
 
@@ -69,7 +64,7 @@ CREATE TABLE `persona` (
   PRIMARY KEY (`idpersona`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-/*Data for the table `persona` */
+
 
 LOCK TABLES `persona` WRITE;
 
@@ -152,33 +147,35 @@ UNLOCK TABLES;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `up_listar_pregunta_alternativas`(
-in _idtema int
+!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `up_listar_pregunta_alternativas`(
+      in _idtema int
 )
 BEGIN
-           DECLARE idpregunta_aleatoria INT DEFAULT 0;
+     DECLARE idpregunta_aleatoria INT DEFAULT 0;
+     
 	   DROP TABLE IF EXISTS temporal;
-           CREATE TEMPORARY TABLE temporal
+     CREATE TEMPORARY TABLE temporal
 	   (
-	   id int NOT NULL,
-	   descripcion varCHAR(500) NOT NULL
+  	   id int NOT NULL,
+  	   descripcion varCHAR(500) NOT NULL
 	   );
-	   
-	   
+
+
 	   SELECT p.idpregunta into idpregunta_aleatoria FROM pregunta p WHERE p.idtema = _idtema ORDER BY RAND() LIMIT 1;
-	   
+
 	   INSERT INTO temporal (id,descripcion)
 	   SELECT p.idpregunta,CONCAT('PREGUNTA: ',p.descripcion) FROM pregunta p WHERE p.idpregunta = idpregunta_aleatoria;
-	   
+
 	   INSERT INTO temporal (id,descripcion)
 	   SELECT idalternativa, a.alternativa from pregunta p
 	   inner join alternativa a on a.idpregunta = p.idpregunta
 	   where p.idpregunta = idpregunta_aleatoria
 	   ORDER BY RAND();
-	
+
 	   SELECT * FROM temporal;
-END */$$
-DELIMITER ;
+END
+$$;
+
 
 /* Procedure structure for procedure `up_usuario` */
 
@@ -209,7 +206,7 @@ IN _idpregunta INT,
 IN _idalternativa INT
 )
 BEGIN
-	select * from alternativa where idalternativa=_idalternativa and idpregunta = _idpregunta AND respuesta = '1'; 
+	select * from alternativa where idalternativa=_idalternativa and idpregunta = _idpregunta AND respuesta = '1';
 END */$$
 DELIMITER ;
 
