@@ -16,8 +16,9 @@ else {
   }
   else {
     ?>
-<!DOCTYPE html>
-<html lang="es" dir="ltr">
+    
+<html>
+<title>ErrorSession</title>
 <head>
   <meta charset="utf-8">
   <title></title>
@@ -39,45 +40,39 @@ else {
       <link rel="stylesheet" type="text/css" href="diseño/css/main1.css">
     <!--===============================================================================================-->
 </head>
-  <body>
-    <section class="contact-wrap">
-    </section>
-
-    <!--     -->
-    <div class="container-contact100">
-   		<div class="wrap-contact100">
-   			<form class="contact100-form validate-form">
-   				<span class="contact100-form-title">
-   				</span>
-
-          <table>
-            <!--Codigo PHP -->
-            <?php
-            session_start();
-            $fecha_antigua=$_SESSION['ultimo_ingreso'];
-            $hora=date("y-n-j H:i:s");
-            $tiempo = (strtotime($hora)-strtotime($fecha_antigua));
-            if($tiempo>=60)
-            {
-              session_destroy();
-              header('location:ErrorSession.html');
-            }
-            else {
-              if(!isset($_SESSION['id'])&&!isset($_SESSION['apellidos_y_nombres']))
-              {
-                header('location:Login.php');
-                die();
-              }
-              else {
-                echo "<title>Inicio</title>";
-                echo "<center><h1><P>BIENVENIDO AL SISTEMA</P></h1></center>";
-                echo "ID: ".$_SESSION['id']."<br/>";
-                echo "APELLIDOS Y NOMBRES: ".$_SESSION['apellidos_y_nombres'];
-              }
-            }
-
-            ?>
-
-          </table>
-  </body>
+<body>
+  <section class="contact-wrap">
+  </section>
+  <!--     -->
+  <div class="container-contact100">
+    <div class="wrap-contact100">
+      <form class="contact100-form validate-form">
+<br/>
+<br/>
+<br/>
+<br/>
+<?php
+echo 'as';
+?>
+<strong>
+<center>
+  <span class="contact100-form-title" broder="1" align="center">
+  <!--<h3>
+    <P>Estimado Usuario:</p>
+  </h3>
+  <h2>
+    <P>Su sesion ha expirado, por</p>
+    <P>favor vuelva a ingresar</p>
+    <P>haciendo clic <a href="Login.php">Aqui</a></p>
+  </h2>
+-->
+  Estimado Usuario:
+  <br><br>
+  Su sesion ha expirado, por
+  favor vuelva a ingresar
+  haciendo clic <a href="Login.php">Aqui</a>
+</span>
+</center>
+</strong>
+</body>
 </html>

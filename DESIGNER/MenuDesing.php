@@ -1,3 +1,23 @@
+<?php
+session_start();
+$fecha_antigua=$_SESSION['ultimo_ingreso'];
+$hora=date("y-n-j H:i:s");
+$tiempo = (strtotime($hora)-strtotime($fecha_antigua));
+if($tiempo>=60)
+{
+  session_destroy();
+  header('location:ErrorSession.html');
+}
+else {
+  if(!isset($_SESSION['id'])&&!isset($_SESSION['apellidos_y_nombres']))
+  {
+    header('location:Login.php');
+    die();
+  }
+  else {
+    ?>
+
+
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>
@@ -32,9 +52,17 @@
 					</header>
 
 				<!-- Footer -->
-					<footer id="footer">
-						<span class="copyright">&copy; Nos reservamos todos los derechos: <a href="http://html5up.net">HTML5</a>.</span>
-					</footer>
+  <footer id='footer'>
+            <?php
+            echo "<center><h1><P>BIENVENIDO AL SISTEMA: ".$_SESSION['apellidos_y_nombres']."</P></h1></center>";
+            echo "<center><h5><P>ID: ".$_SESSION['apellidos_y_nombres']."</P></h5></center>";
+
+
+          }
+        }
+
+          ?>
+          </footer>
 
 			</div>
 		</div>
