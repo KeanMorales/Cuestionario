@@ -12,7 +12,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`cuestionario` /*!40100 DEFAULT CHARACTE
 
 USE `cuestionario`;
 
-
 DROP TABLE IF EXISTS `alternativa`;
 
 CREATE TABLE `alternativa` (
@@ -40,11 +39,10 @@ DROP TABLE IF EXISTS `curso`;
 CREATE TABLE `curso` (
   `idcurso` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(500) unique not null,
+  `nombre` varchar(500) UNIQUE NOT NULL,
   `estado` varchar(500) NOT NULL DEFAULT 'activo',
   PRIMARY KEY (`idcurso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
-
 
 /*Data for the table `curso` */
 
@@ -370,7 +368,22 @@ BEGIN
 	END WHILE;
 END
 $$
-
+select * from Pregunta;
+select * from alternativa;
+insert into Pregunta(idpersona,descripcion,idtema,estado) values(2,'¿Qué es Sql?',3,1);
+call insertar_alternativas(4,'<alternativas>
+    <alternativa>Un Sistema Gestor de Base de Datos</alternativa>
+    <alternativa>Un Programa</alternativa>
+    <alternativa>Un framework</alternativa>
+    <alternativa>Un Procedimiento</alternativa>
+</alternativas>
+,
+<respuestas>
+	<respuesta>1</respuesta>
+	<respuesta>0</respuesta>
+	<respuesta>0</respuesta>
+	<respuesta>0</respuesta>
+</respuestas>');
 /*VALIDAR RESPUESTA*/
 
 DELIMITER $$
@@ -388,5 +401,3 @@ BEGIN
     END IF;
 END;
 $$
-
-
