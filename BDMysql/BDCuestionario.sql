@@ -39,10 +39,12 @@ DROP TABLE IF EXISTS `curso`;
 
 CREATE TABLE `curso` (
   `idcurso` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(500) NOT NULL,
+  `nombre` varchar(500) unique not null,
   `estado` varchar(500) NOT NULL DEFAULT 'activo',
   PRIMARY KEY (`idcurso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+
 
 /*Data for the table `curso` */
 
@@ -105,7 +107,7 @@ DROP TABLE IF EXISTS `tema`;
 CREATE TABLE `tema` (
   `idtema` int(11) NOT NULL AUTO_INCREMENT,
   `idcurso` int(11) DEFAULT NULL,
-  `nombre_tema` varchar(500) NOT NULL,
+  `nombre_tema` varchar(500) unique NOT NULL,
   `estado` varchar(500) NOT NULL DEFAULT 'activo',
   PRIMARY KEY (`idtema`),
   KEY `idcurso` (`idcurso`),
@@ -386,3 +388,5 @@ BEGIN
     END IF;
 END;
 $$
+
+
