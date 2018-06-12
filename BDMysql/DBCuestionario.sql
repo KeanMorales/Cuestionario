@@ -385,3 +385,14 @@ BEGIN
     END IF;
 END;
 $$
+
+/*Procedure Lista Curso*/
+DELIMITER $$
+CREATE PROCEDURE ListarIdeTemas(
+	In NombreCurso nvarchar(150)
+)
+BEGIN
+	select c.idcurso,t.nombre_tema from curso c inner join Tema t on c.nombre=NombreCurso;
+END;
+$$
+
