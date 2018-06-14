@@ -43,10 +43,10 @@ else {
 						<p> Mentes &nbsp;&bull;&nbsp; Futuras</p>
 						<nav>
 							<ul>
-								<li><a href="MenuDesing.html" class="icon-home"><span class="label">Inicio</span></a></li>
-								<li><a href="Seleccionar.html" class="icon-question"><span>Ingresar Preguntas</span></a></li>
-								<li><a href="Responder.html" class="icon-pencil"><span class="label">Responder Preguntas</span></a></li>
-								<li><a href="info.html" class="icon-profile"><span class="label">Contacto</span></a></li>
+								<li><a href="MenuDesing.php" class="icon-home"><span class="label">Inicio</span></a></li>
+								<li><a href="Seleccionar.php" class="icon-question"><span>Ingresar Preguntas</span></a></li>
+								<li><a href="Responder.php" class="icon-pencil"><span class="label">Responder Preguntas</span></a></li>
+								<li><a href="info.php" class="icon-profile"><span class="label">Contacto</span></a></li>
 							</ul>
 						</nav>
 					</header>

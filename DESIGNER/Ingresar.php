@@ -1,22 +1,5 @@
-<?php
-session_start();
-$fecha_antigua=$_SESSION['ultimo_ingreso'];
-$hora=date("y-n-j H:i:s");
-$tiempo = (strtotime($hora)-strtotime($fecha_antigua));
-if($tiempo>=60)
-{
-  session_destroy();
-  header('location:ErrorSession.html');
-}
-else {
-  if(!isset($_SESSION['id'])&&!isset($_SESSION['apellidos_y_nombres']))
-  {
-    header('location:Login.php');
-    die();
-  }
-  else {
-    ?>
-    
+
+
     <!DOCTYPE html>
     <html lang="es" dir="ltr">
       <head>
@@ -44,9 +27,9 @@ else {
         <section class="contact-wrap">
           <div class="Barra">
             <ul>
-              <li><a href="MenuDesing.html"   class="icon-home"></a></li>
-              <li><a href="Ingresar.html"     class="icon-loop"></a></li>
-              <li><a href="Seleccionar.html"  class="icon-arrow-left"></a></li>
+              <li><a href="MenuDesing.php"   class="icon-home"></a></li>
+              <li><a href="Ingresar.php"     class="icon-loop"></a></li>
+              <li><a href="Seleccionar.php"  class="icon-arrow-left"></a></li>
               <!--<li><a href="#" class="icon-database"></a></li>-->
             </ul>
           </div>

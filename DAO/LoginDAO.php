@@ -22,7 +22,7 @@ require_once('../DAL/DBAccess.php');
            $_SESSION['apellidos_y_nombres']= $row['APELLIDOS_Y_NOMBRES'];
 
            $_SESSION['ultimo_ingreso']= date("Y-n-j H:i:s");
-           header('location:../DESIGNER/Inicio.php');
+           header('location:../DESIGNER\MenuDesing.php');
          }
     }
     else {
