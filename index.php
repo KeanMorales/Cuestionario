@@ -14,7 +14,7 @@
 
         <center>
         <p3>BIENVENIDO AL SISTEMA</p3></br></br></br>
-        <a href="DESIGNER/Login.php">Registrarse</a>
+        <a href="DESIGNER/login.html">Registrarse</a>
         </center>
       </form>
       <footer><a href="#">Todos los derechos reservados | Chincha</a></footer>
