@@ -26,7 +26,7 @@ require_once('../DAL/DBAccess.php');
          }
     }
     else {
-      header('location:../DESIGNER/Login.php');
+      header('location:../DESIGNER/login.html');
     }
 
     $statement->closecursor();
