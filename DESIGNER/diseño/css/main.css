@@ -157,10 +157,10 @@
 	}
 
 	#wrapper {
-		-moz-animation: wrapper 3s forwards;
-		-webkit-animation: wrapper 3s forwards;
-		-ms-animation: wrapper 3s forwards;
-		animation: wrapper 3s forwards;
+		-moz-animation: wrapper 0s forwards;
+		-webkit-animation: wrapper 0s forwards;
+		-ms-animation: wrapper 0s forwards;
+		animation: wrapper 0s forwards;
 		height: 100%;
 		left: 0;
 		opacity: 0;
@@ -307,10 +307,10 @@
 	}
 
 	#overlay {
-		-moz-animation: overlay 1.5s 1.5s forwards;
-		-webkit-animation: overlay 1.5s 1.5s forwards;
-		-ms-animation: overlay 1.5s 1.5s forwards;
-		animation: overlay 1.5s 1.5s forwards;
+		-moz-animation: overlay 0s 0s forwards;
+		-webkit-animation: overlay 0s 0s forwards;
+		-ms-animation: overlay 0s 0s forwards;
+		animation: overlay 0s 0s forwards;
 		background-attachment: fixed, fixed;
 		background-image: url("images/overlay-pattern.png"), url("images/overlay.svg");
 		background-position: top left, center center;

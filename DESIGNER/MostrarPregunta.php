@@ -3,8 +3,15 @@
 	<head>
 		<title>LISTAR PREGUNTA</title>
         <!--link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css"-->
+				<link rel="stylesheet" href="css/fonts.css">
+	     <script src="http://code.jquery.com/jquery-latest.js"></script>
+	     <script src="js/MenuDesing.js"></script>
+	     <link rel="stylesheet" href="diseño/css/main.css" />
 	</head>
     <body style="padding:15px;">
+			<!--Diseño Espejo-->
+	    <div id="overlay"></div>
+	    <!----->
       <center>
 				<table>
 				<form class="verificar" id="form" action="VerificarRespuesta.php" method="post" autocomplete="off">
@@ -59,5 +66,10 @@
 				?>
       </table>
     </center>
+		<script>
+	    window.onload = function() { document.body.className = ''; }
+	    window.ontouchmove = function() { return false; }
+	    window.onorientationchange = function() { document.body.scrollTop = 0; }
+	  </script>
     </body>
 </html>
