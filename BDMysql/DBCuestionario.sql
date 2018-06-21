@@ -106,7 +106,7 @@ IN _contrasenia VARCHAR(100)
 BEGIN
 	/*Se va mostrar el idpersona, su nombre, contraseña y concatenando 
     su apellidos y nombres*/
-	SELECT p.idpersona, u.nombre, u.contrasenia,CONCAT(p.apellidos,', ',p.nombres)
+	SELECT p.idpersona, u.nombre, u.contrasenia,CONCAT(p.idpersona,'-',p.apellidos,', ',p.nombres)
 	AS 'APELLIDOS_Y_NOMBRES'FROM usuario u
 	INNER JOIN persona p ON u.idpersona = p.idpersona
 	WHERE nombre=_nombre AND contrasenia=_contrasenia;
