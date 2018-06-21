@@ -9,6 +9,7 @@
     <!--===============================USAR TODO ESTO================================================================-->
         <link rel="stylesheet" href="material desing lite/material.min.css">
         <script type="text/javascript" src="material desing lite/material.min.js"></script>
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
         <link rel="stylesheet" type="text/css" href="diseño/vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="diseño/vendor/animate/animate.css">
@@ -19,57 +20,44 @@
         <link rel="stylesheet" type="text/css" href="diseño/css/util.css">
         <link rel="stylesheet" type="text/css" href="diseño/css/main1.css">
       <!--===============================================================================================-->
-      <link rel="stylesheet" href="css/fonts.css">
-	   <script src="http://code.jquery.com/jquery-latest.js"></script>
-	   <script src="js/MenuDesing.js"></script>
-	   <link rel="stylesheet" href="diseño/css/main.css" />
   </head>
   <body>
-    <!--Diseño Espejo-->
-    <div id="overlay"></div>
-    <!----->
     <section class="contact-wrap">
     </section>
 
     <!--     -->
     <div class="container-contact100">
       <div class="wrap-contact100">
-        <form class="contact100-form validate-form">
+        <form class="contact100-form validate-form" method="POST" action="Curso/ActualizarCurso.php">
           <span class="contact100-form-title">
             ActualizarCurso
           </span>
 
-    <form method="POST" action="Curso/ActualizarCurso.php">
       <table>
         <tr>
-            <td><form action="#">
+            <td>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" name="IdCurso" id="sample3">
                 <label class="mdl-textfield__label" for="sample3">IdCurso</label>
               </div>
-            </form>
           </td>
         </tr>
 
         <tr>
             <td>
-              <form action="#">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" name="Nombre" id="sample3">
                 <label class="mdl-textfield__label" for="sample3">Nombre</label>
               </div>
-            </form>
           </td>
         </tr>
 
         <tr>
             <td>
-              <form action="#">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" name="Estado" id="sample3">
                 <label class="mdl-textfield__label" for="sample3">Estado</label>
               </div>
-            </form>
           </td>
         </tr>
 
@@ -83,7 +71,7 @@
       <div class="container-contact100-form-btn">
         <div class="wrap-contact100-form-btn">
           <div class="contact100-form-bgbtn"></div>
-          <button class="contact100-form-btn" onclick="myFunction()">
+          <button class="contact100-form-btn" type="submit" value="Actualizar Curso">
             <span>
             Actualizar Curso
               <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -93,11 +81,8 @@
       </div>
   </form>
 
-  <script>
-    window.onload = function() { document.body.className = ''; }
-    window.ontouchmove = function() { return false; }
-    window.onorientationchange = function() { document.body.scrollTop = 0; }
-  </script>
-  
+
+
+
   </body>
 </html>

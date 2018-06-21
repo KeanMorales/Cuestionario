@@ -21,15 +21,8 @@
       <link rel="stylesheet" type="text/css" href="diseño/css/util.css">
       <link rel="stylesheet" type="text/css" href="diseño/css/main1.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" href="css/fonts.css">
-   <script src="http://code.jquery.com/jquery-latest.js"></script>
-   <script src="js/MenuDesing.js"></script>
-   <link rel="stylesheet" href="diseño/css/main.css" />
 </head>
   <body>
-    <!--Diseño Espejo-->
-    <div id="overlay"></div>
-    <!----->
     <section class="contact-wrap">
       <div class="Barra">
         <ul>
@@ -50,10 +43,5 @@
           <table>
               Proyecto creado por los alumnos de la facultad de ingenieria de la Escuela Profesional de Computacion y Sistemas del ciclo VI
           </table>
-          <script>
-            window.onload = function() { document.body.className = ''; }
-            window.ontouchmove = function() { return false; }
-            window.onorientationchange = function() { document.body.scrollTop = 0; }
-          </script>
   </body>
 </html>

@@ -44,8 +44,8 @@ else {
 						<nav>
 							<ul>
 								<li><a href="MenuDesing.php" class="icon-home"><span class="label">Inicio</span></a></li>
-								<li><a href="Seleccionar.php" class="icon-question"><span>Ingresar Preguntas</span></a></li>
-								<li><a href="Responder.php" class="icon-pencil"><span class="label">Responder Preguntas</span></a></li>
+								<li><a href="test_ingresar_preguntas.php" class="icon-question"><span>Ingresar Preguntas</span></a></li>
+								<li><a href="MostrarPregunta.php" class="icon-pencil"><span class="label">Responder Preguntas</span></a></li>
 								<li><a href="info.php" class="icon-profile"><span class="label">Contacto</span></a></li>
 							</ul>
 						</nav>

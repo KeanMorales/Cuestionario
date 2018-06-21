@@ -9,24 +9,67 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/Responder.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <!--===============================USAR TODO ESTO================================================================-->
+        <link rel="stylesheet" href="material desing lite/material.min.css">
+        <script type="text/javascript" src="material desing lite/material.min.js"></script>
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="diseño/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="diseño/vendor/animate/animate.css">
+        <link rel="stylesheet" type="text/css" href="diseño/vendor/css-hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" type="text/css" href="diseño/vendor/animsition/css/animsition.min.css">
+        <link rel="stylesheet" type="text/css" href="diseño/vendor/select2/select2.min.css">
+        <link rel="stylesheet" type="text/css" href="diseño/vendor/daterangepicker/daterangepicker.css">
+        <link rel="stylesheet" type="text/css" href="diseño/css/util.css">
+        <link rel="stylesheet" type="text/css" href="diseño/css/main1.css">
+      <!--===============================================================================================-->
+  </head>
+  <body>
+    <section class="contact-wrap">
+    </section>
 
-    <form method="POST" action="../DAO/InsertarCurso.php">
+    <!--     -->
+    <div class="container-contact100">
+      <div class="wrap-contact100">
+        <form class="contact100-form validate-form" method="POST" action="../DAO/InsertarCurso.php">
+          <span class="contact100-form-title">
+            Insertar Curso
+          </span>
+
       <table>
-
         <tr>
-            <td>Curso:</td>
-            <td><input type="text" name="Nombre"></td>
+            <td>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" name="Nombre" id="sample3">
+                <label class="mdl-textfield__label" for="sample3">Nombre :</label>
+              </div>
+          </td>
         </tr>
 
-        <tr>
 
+        <!--<tr>
             <td>&nbsp;</td>
             <td><input type="submit" value="Insertar Curso"></td>
         </tr>
+      -->
       </table>
 
-  </form>
+      <div class="container-contact100-form-btn">
+        <div class="wrap-contact100-form-btn">
+          <div class="contact100-form-bgbtn"></div>
+          <button class="contact100-form-btn" type="submit" value="Insertar Curso">
+            <span>
+            Insertar Curso
+              <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+      </div>
 
+
+  </form>
     <br />
       <br />
         <br />

@@ -22,15 +22,8 @@
   	<link rel="stylesheet" type="text/css" href="diseño/css/util.css">
   	<link rel="stylesheet" type="text/css" href="diseño/css/main1.css">
   <!--===============================================================================================-->
-  <link rel="stylesheet" href="css/fonts.css">
- <script src="http://code.jquery.com/jquery-latest.js"></script>
- <script src="js/MenuDesing.js"></script>
- <link rel="stylesheet" href="diseño/css/main.css" />
   </head>
   <body>
-    <!--Diseño Espejo-->
-    <div id="overlay"></div>
-    <!----->
     <section class="contact-wrap">
 
     <div class="Barra">
@@ -41,7 +34,6 @@
         <!--<li><a href="mailto:contacto@pregunta.com" class="icon-info"></a></li>-->
       </ul>
     </div>
-
  </section>
  <!--     -->
  <div class="container-contact100">
@@ -201,12 +193,5 @@ $('.contact-form').find('.form-control').blur(function() {
 
       gtag('config', 'UA-23581568-13');
     </script>
-
-    <script>
-      window.onload = function() { document.body.className = ''; }
-      window.ontouchmove = function() { return false; }
-      window.onorientationchange = function() { document.body.scrollTop = 0; }
-    </script>
-
   </body>
 </html>
