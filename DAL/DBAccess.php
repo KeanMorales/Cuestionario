@@ -6,7 +6,7 @@ class DBAccess
  public function __construct()
  {
    try {
-     $this->conn = new PDO('mysql:host=localhost;dbname=cuestionario', 'root', '');
+     $this->conn = new PDO('mysql:host=localhost;dbname=cuestionario', 'root', '123456');
    } catch (PDOException $e) {
      print "¡Error!: " . $e->getMessage() . "<br/>";
      die();
